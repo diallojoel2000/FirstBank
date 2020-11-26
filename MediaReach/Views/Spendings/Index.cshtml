@@ -1,0 +1,117 @@
+﻿@model IEnumerable<DataFactoryMr.Models.Spending>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Month)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Media)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quarter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Advertizer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Station)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Days)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeBand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeSlot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrintOOH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageDuration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalSpend)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Month)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Media)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quarter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Advertizer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Station)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Days)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeBand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeSlot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrintOOH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageDuration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalSpend)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SpendingId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SpendingId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SpendingId })
+        </td>
+    </tr>
+}
+
+</table>

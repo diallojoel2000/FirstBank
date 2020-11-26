@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@Html.DropDownList("ChartId", null, "- Select Chart Type -", htmlAttributes: new { @class = "form-control" })
+@Html.DropDownList("SpendingId", null, "- Select Spending Category -", htmlAttributes: new { @class = "form-control" })
+<div id="container" style="width: 100%; height: 400px;"></div>
+<script>
+    var url = '@Url.Action("LoadBySpenging", "Home")';
+    var options = {
+        chart: {
+            renderTo: 'container',
+            type: 'line'
+        },
+        title: {
+            text: 'Annual Spending'
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: 'Fruit eaten'
+            }
+        },
+        series: [{}]
+    };
+
+    $("#ChartId").change(function () {
+        var id = $(this).val();
+        options.chart.type = id;
+        var chart = new Highcharts.Chart(options);
+    });
+    $("#SpendingId").change(function () {
+        var id = $(this).val();
+        //options.chart.type = id;
+        $.getJSON(url+"/"+id, function (data) {
+            options.series = data;
+            var chart = new Highcharts.Chart(options);
+        });
+        //options.series = [{
+        //    name: 'Paul',
+        //    data: [1, 0, 4, 1, 0, 4, 1, 0, 4, 1, 0, 4]
+        //}, {
+        //    name: 'Pater',
+        //    data: [5, 7, 3, 1, 0, 4, 3, 5, 6, 8, 9, 12]
+        //},
+        //                                {
+        //                                    name: 'James',
+        //                                    data: [3, 5, 6, 8, 9, 12, 5, 7, 3, 1, 0, 4]
+        //                                }];
+        var chart = new Highcharts.Chart(options);
+    });
+    
+  
+</script>
